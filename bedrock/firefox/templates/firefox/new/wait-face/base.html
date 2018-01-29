@@ -6,6 +6,12 @@
 
 {% extends "firefox/base-pebbles.html" %}
 
+{% block optimizely %}
+  {% if switch('firefox-new-optimizely', ['en-US']) %}
+    {% include 'includes/optimizely.html' %}
+  {% endif %}
+{% endblock %}
+
 {% block extra_meta %}
   <meta name="robots" content="noindex,follow">
 {% endblock %}
@@ -32,6 +38,7 @@
         {% block head_content %}{% endblock %}
         {% block primary_download_button %}{% endblock %}
       </div>
+      {% block optional_cta %}{% endblock %}
     </div>
   </section>
 
