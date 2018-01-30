@@ -16,18 +16,16 @@
     }
 
     function initVideoInteractionTracking() {
-        var videos = document.querySelectorAll('video');
+        var video = document.getElementById('faster-video');
 
-        for (var i = 0; i < videos.length; i++) {
-            videos[i].addEventListener('play', function() {
-                trackVideoInteraction(this.getAttribute('data-ga-label'), 'play');
-            }, false);
+        video.addEventListener('play', function() {
+            trackVideoInteraction(this.getAttribute('data-ga-label'), 'play');
+        }, false);
 
-            videos[i].addEventListener('pause', function() {
-                var action = this.currentTime === this.duration ? 'complete' : 'pause';
-                trackVideoInteraction(this.getAttribute('data-ga-label'), action);
-            }, false);
-        }
+        video.addEventListener('pause', function() {
+            var action = this.currentTime === this.duration ? 'complete' : 'pause';
+            trackVideoInteraction(this.getAttribute('data-ga-label'), action);
+        }, false);
     }
 
     videoPoster.init();
